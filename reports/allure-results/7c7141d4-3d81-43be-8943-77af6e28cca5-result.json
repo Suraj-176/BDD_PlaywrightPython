@@ -1,0 +1,110 @@
+{
+  "name": "User attempts login with username \"\"\"\" and password \"\"secret_sauce\"\"",
+  "status": "passed",
+  "description": "C:\\Python_Playwright\\src\\features\\ui\\login.feature: User attempts login with username \"<username>\" and password \"<password>\"",
+  "steps": [
+    {
+      "name": "Given user navigates to the application",
+      "status": "passed",
+      "start": 1781584079554,
+      "stop": 1781584080653
+    },
+    {
+      "name": "When User enters \"\" username and \"secret_sauce\" password",
+      "status": "passed",
+      "start": 1781584080653,
+      "stop": 1781584081271
+    },
+    {
+      "name": "Step: Clicking login button",
+      "status": "passed",
+      "start": 1781584081271,
+      "stop": 1781584081615
+    },
+    {
+      "name": "Then User encounters error message: \"Epic sadface: Username is required\"",
+      "status": "passed",
+      "steps": [
+        {
+          "name": "Validate login error message is \"Epic sadface: Username is required\"",
+          "status": "passed",
+          "start": 1781584081698,
+          "stop": 1781584081698
+        }
+      ],
+      "start": 1781584081617,
+      "stop": 1781584081698
+    }
+  ],
+  "attachments": [
+    {
+      "name": "stderr",
+      "source": "7c34c01f-a867-4eef-b176-b7f780c1c412-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "_pytest_bdd_example",
+      "value": "{'username': '', 'password': 'secret_sauce', 'error_message': 'Epic sadface: Username is required'}"
+    },
+    {
+      "name": "browser",
+      "value": "'chromium, firefox'"
+    }
+  ],
+  "start": 1781584079552,
+  "stop": 1781584081700,
+  "uuid": "df40c3a0-b87c-44bc-a11f-46f053e6f630",
+  "historyId": "423aea3e08f11b6c682119ddc4a779a0",
+  "testCaseId": "c973e67129f0f2b52528fc06e54101cc",
+  "fullName": "src.steps.ui.test_login#test_user_attempts_login_with_username_username_and_password_password",
+  "labels": [
+    {
+      "name": "parentSuite",
+      "value": "UI Test Suite"
+    },
+    {
+      "name": "suite",
+      "value": "login"
+    },
+    {
+      "name": "tag",
+      "value": "InvalidCredentials"
+    },
+    {
+      "name": "tag",
+      "value": "Sanity"
+    },
+    {
+      "name": "tag",
+      "value": "LoginPage"
+    },
+    {
+      "name": "host",
+      "value": "S6-SurajY"
+    },
+    {
+      "name": "thread",
+      "value": "6456-MainThread"
+    },
+    {
+      "name": "framework",
+      "value": "pytest"
+    },
+    {
+      "name": "language",
+      "value": "cpython3"
+    },
+    {
+      "name": "package",
+      "value": "src.steps.ui.test_login"
+    }
+  ],
+  "titlePath": [
+    "src",
+    "steps",
+    "ui",
+    "test_login.py"
+  ]
+}

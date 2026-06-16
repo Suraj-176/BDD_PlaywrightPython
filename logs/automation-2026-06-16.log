@@ -1,0 +1,125 @@
+[2026-06-16T09:57:34] [INFO] 
+========== TEST RUN STARTED: 2026-06-16T04:27:34.378113Z ==========
+
+[2026-06-16T09:57:34] [INFO] ✅ Environment validation successful
+[2026-06-16T09:57:37] [INFO] 
+========== TEST RUN STARTED: 2026-06-16T04:27:37.210395Z ==========
+
+[2026-06-16T09:57:37] [INFO] 
+========== TEST RUN STARTED: 2026-06-16T04:27:37.560758Z ==========
+
+[2026-06-16T09:57:37] [INFO] ✅ Environment validation successful
+[2026-06-16T09:57:37] [INFO] ✅ Environment validation successful
+[2026-06-16T09:57:37] [INFO] 
+========== TEST RUN STARTED: 2026-06-16T04:27:37.998334Z ==========
+
+[2026-06-16T09:57:38] [INFO] 
+========== TEST RUN STARTED: 2026-06-16T04:27:38.366334Z ==========
+
+[2026-06-16T09:57:38] [INFO] ✅ Environment validation successful
+[2026-06-16T09:57:38] [INFO] ✅ Environment validation successful
+[2026-06-16T09:57:38] [INFO] 
+========== TEST RUN STARTED: 2026-06-16T04:27:38.797928Z ==========
+
+[2026-06-16T09:57:38] [INFO] 
+========== TEST RUN STARTED: 2026-06-16T04:27:38.983081Z ==========
+
+[2026-06-16T09:57:39] [INFO] ✅ Environment validation successful
+[2026-06-16T09:57:39] [INFO] ✅ Environment validation successful
+[2026-06-16T09:57:39] [INFO] 
+========== TEST RUN STARTED: 2026-06-16T04:27:39.300527Z ==========
+
+[2026-06-16T09:57:39] [INFO] 
+========== TEST RUN STARTED: 2026-06-16T04:27:39.490914Z ==========
+
+[2026-06-16T09:57:39] [INFO] ✅ Environment validation successful
+[2026-06-16T09:57:39] [INFO] ✅ Environment validation successful
+[2026-06-16T09:57:43] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:43] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:43] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:43] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:43] [INFO] Step: Executing Bank Transaction API Request | {"title": "AML Alert", "userId": 1}
+[2026-06-16T09:57:43] [INFO] API POST Request initiated | {"url": "https://jsonplaceholder.typicode.com/posts", "body": {"title": "AML Alert", "body": "AML Compliance Alert Triggered", "userId": 1}}
+[2026-06-16T09:57:43] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:43] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:43] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:43] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:44] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:44] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:46] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:46] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:46] [INFO] API POST Response received | {"duration": "2538.48ms", "status": 201}
+[2026-06-16T09:57:46] [INFO] Step: Validating API HTTP Status | {"actual": 201, "expected": 201}
+[2026-06-16T09:57:46] [INFO] Validating HTTP status code | {"actual": 201, "expected": 201}
+[2026-06-16T09:57:46] [INFO] ✅ Validation Passed: API Status matches
+[2026-06-16T09:57:46] [INFO] Step: Validating transaction ID | {"id": 101}
+[2026-06-16T09:57:46] [INFO] Validating transaction ID format | {"id": 101}
+[2026-06-16T09:57:46] [INFO] ✅ Validation Passed: Transaction ID is valid and numeric
+[2026-06-16T09:57:47] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:47] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:48] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:48] [INFO] Step: Inserting user credentials | {"username": "problem_user"}
+[2026-06-16T09:57:48] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:48] [INFO] Step: Inserting user credentials | {"username": "locked_out_user"}
+[2026-06-16T09:57:48] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:48] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:48] [INFO] Step: Inserting user credentials | {"username": "problem_user"}
+[2026-06-16T09:57:48] [INFO] Step: Inserting user credentials | {"username": ""}
+[2026-06-16T09:57:49] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:49] [INFO] Step: Inserting user credentials | {"username": "prasad"}
+[2026-06-16T09:57:49] [INFO] Step: Submitting login form
+[2026-06-16T09:57:49] [INFO] Step: Submitting login form
+[2026-06-16T09:57:49] [INFO] Step: Submitting login form
+[2026-06-16T09:57:49] [INFO] Step: Submitting login form
+[2026-06-16T09:57:49] [INFO] Step: Submitting login form
+[2026-06-16T09:57:49] [INFO] Step: Validating login error message
+[2026-06-16T09:57:49] [INFO] Step: Validating login error message
+[2026-06-16T09:57:49] [INFO] Validating login error message | {"actual": "Epic sadface: Username is required", "expected": "Epic sadface: Username is required"}
+[2026-06-16T09:57:49] [INFO] ✅ Validation Passed: Login error message matches expected value
+[2026-06-16T09:57:49] [INFO] Step: Validating login error message
+[2026-06-16T09:57:49] [INFO] Step: Validating login error message
+[2026-06-16T09:57:49] [INFO] Validating login error message | {"actual": "Epic sadface: Username and password do not match any user in this service", "expected": "Epic sadface: Username and password do not match any user in this service"}
+[2026-06-16T09:57:49] [INFO] ✅ Validation Passed: Login error message matches expected value
+[2026-06-16T09:57:49] [INFO] Step: Validating login error message
+[2026-06-16T09:57:49] [INFO] Validating login error message | {"actual": "Epic sadface: Password is required", "expected": "Epic sadface: Password is required"}
+[2026-06-16T09:57:49] [INFO] ✅ Validation Passed: Login error message matches expected value
+[2026-06-16T09:57:49] [INFO] Validating login error message | {"actual": "Epic sadface: Sorry, this user has been locked out.", "expected": "Epic sadface: Sorry, this user has been locked out."}
+[2026-06-16T09:57:49] [INFO] ✅ Validation Passed: Login error message matches expected value
+[2026-06-16T09:57:49] [INFO] Validating login error message | {"actual": "Epic sadface: Username and password do not match any user in this service", "expected": "Epic sadface: Username and password do not match any user in this service"}
+[2026-06-16T09:57:49] [INFO] ✅ Validation Passed: Login error message matches expected value
+[2026-06-16T09:57:49] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:49] [INFO] Step: Inserting user credentials | {"username": "problem_user"}
+[2026-06-16T09:57:50] [INFO] Step: Submitting login form
+[2026-06-16T09:57:51] [INFO] Step: Validating login error message
+[2026-06-16T09:57:51] [INFO] Validating login error message | {"actual": "Epic sadface: Username and password do not match any user in this service", "expected": "Epic sadface: Username and password do not match any user in this service"}
+[2026-06-16T09:57:51] [INFO] ✅ Validation Passed: Login error message matches expected value
+[2026-06-16T09:57:51] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:51] [INFO] Step: Inserting user credentials | {"username": "prasad"}
+[2026-06-16T09:57:53] [INFO] Step: Submitting login form
+[2026-06-16T09:57:53] [INFO] Step: Validating login error message
+[2026-06-16T09:57:53] [INFO] Validating login error message | {"actual": "Epic sadface: Username and password do not match any user in this service", "expected": "Epic sadface: Username and password do not match any user in this service"}
+[2026-06-16T09:57:53] [INFO] ✅ Validation Passed: Login error message matches expected value
+[2026-06-16T09:57:54] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:54] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:55] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:55] [INFO] Step: Inserting user credentials | {"username": "problem_user"}
+[2026-06-16T09:57:56] [INFO] Step: Submitting login form
+[2026-06-16T09:57:56] [INFO] Step: Validating login error message
+[2026-06-16T09:57:57] [INFO] Validating login error message | {"actual": "Epic sadface: Password is required", "expected": "Epic sadface: Password is required"}
+[2026-06-16T09:57:57] [INFO] ✅ Validation Passed: Login error message matches expected value
+[2026-06-16T09:57:58] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:58] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:59] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:59] [INFO] Step: Inserting user credentials | {"username": "locked_out_user"}
+[2026-06-16T09:57:59] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:59] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:58:00] [INFO] Step: Submitting login form
+[2026-06-16T09:58:00] [INFO] Step: Validating login error message
+[2026-06-16T09:58:00] [INFO] Validating login error message | {"actual": "Epic sadface: Sorry, this user has been locked out.", "expected": "Epic sadface: Sorry, this user has been locked out."}
+[2026-06-16T09:58:00] [INFO] ✅ Validation Passed: Login error message matches expected value
+[2026-06-16T09:58:00] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:58:00] [INFO] Step: Inserting user credentials | {"username": ""}
+[2026-06-16T09:58:01] [INFO] Step: Submitting login form
+[2026-06-16T09:58:01] [INFO] Step: Validating login error message
+[2026-06-16T09:58:01] [INFO] Validating login error message | {"actual": "Epic sadface: Username is required", "expected": "Epic sadface: Username is required"}
+[2026-06-16T09:58:01] [INFO] ✅ Validation Passed: Login error message matches expected value

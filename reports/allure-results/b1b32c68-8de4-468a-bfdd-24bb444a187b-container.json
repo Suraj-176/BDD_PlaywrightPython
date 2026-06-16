@@ -1,0 +1,1 @@
+{"uuid": "2d7d6639-8ce6-438c-9bcd-f8cddf3ae240", "befores": [{"name": "pytestbdd_stepdef_when_the user sends an API POST request to create a transaction with title \"{title}\" and userId {user_id:d}", "status": "passed", "start": 1781584063914, "stop": 1781584063916}], "start": 1781584063914, "stop": 1781584066470}

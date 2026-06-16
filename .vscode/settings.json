@@ -1,0 +1,24 @@
+{
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestArgs": [
+    "src/steps"
+  ],
+  // 🥒 Profile A: Configuration for official 'Cucumber' Extension
+  "cucumber.features": [
+    "src/features/**/*.feature"
+  ],
+  "cucumber.glue": [
+    "src/steps/**/*.py"
+  ],
+  // 🥒 Profile B: Configuration for 'Cucumber (Gherkin) Full Support' Extension (by Alexandre Spitalli)
+  "cucumberautocomplete.steps": [
+    "src/steps/**/*.py"
+  ],
+  "cucumberautocomplete.syncfeatures": "src/features/**/*.feature",
+  "cucumberautocomplete.strictGherkinValidation": false,
+  "cucumberautocomplete.customParameters": [],
+  // 🔍 Teach the extension to parse Python/Pytest-BDD decorators like @given, @when, @then, and parsers wrappers
+  "cucumberautocomplete.stepRegEx": "^@(given|when|then|step)\\((?:parsers\\.(parse|re|cfparse)\\()?\\s*['\"](?P<step>.*?)['\"]\\s*\\)?\\)"
+}

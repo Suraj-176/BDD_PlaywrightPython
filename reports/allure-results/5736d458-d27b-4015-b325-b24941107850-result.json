@@ -1,0 +1,103 @@
+{
+  "name": "Bank API returns a successful response when creating a transaction",
+  "status": "passed",
+  "description": "C:\\Python_Playwright\\src\\features\\api\\api_login.feature: Bank API returns a successful response when creating a transaction",
+  "steps": [
+    {
+      "name": "the user sends an API POST request to create a transaction with title \"AML Alert\" and userId 1",
+      "status": "passed",
+      "start": 1781584063916,
+      "stop": 1781584066458
+    },
+    {
+      "name": "Then the API response status should be 201",
+      "status": "passed",
+      "steps": [
+        {
+          "name": "Validate API HTTP Status matches 201",
+          "status": "passed",
+          "start": 1781584066459,
+          "stop": 1781584066461
+        }
+      ],
+      "start": 1781584066459,
+      "stop": 1781584066461
+    },
+    {
+      "name": "Then the API response should contain a valid transaction id",
+      "status": "passed",
+      "steps": [
+        {
+          "name": "Validate response contains a valid transaction ID",
+          "status": "passed",
+          "start": 1781584066461,
+          "stop": 1781584066461
+        }
+      ],
+      "start": 1781584066461,
+      "stop": 1781584066461
+    }
+  ],
+  "attachments": [
+    {
+      "name": "stderr",
+      "source": "8bdb3f37-dcdb-4986-9353-5cd3687fd266-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1781584063914,
+  "stop": 1781584066464,
+  "uuid": "288b2977-eef2-4492-be03-3f47cb92d7e6",
+  "historyId": "7d7fc045fcee16a4002b32138856b52d",
+  "testCaseId": "049649eb7bc2fac1f43741168e6ec613",
+  "fullName": "src.steps.api.test_api_login#test_bank_api_returns_a_successful_response_when_creating_a_transaction",
+  "labels": [
+    {
+      "name": "parentSuite",
+      "value": "API Test Suite"
+    },
+    {
+      "name": "suite",
+      "value": "api login"
+    },
+    {
+      "name": "tag",
+      "value": "APILogin"
+    },
+    {
+      "name": "tag",
+      "value": "API"
+    },
+    {
+      "name": "tag",
+      "value": "Sanity"
+    },
+    {
+      "name": "host",
+      "value": "S6-SurajY"
+    },
+    {
+      "name": "thread",
+      "value": "9924-MainThread"
+    },
+    {
+      "name": "framework",
+      "value": "pytest"
+    },
+    {
+      "name": "language",
+      "value": "cpython3"
+    },
+    {
+      "name": "package",
+      "value": "src.steps.api.test_api_login"
+    }
+  ],
+  "titlePath": [
+    "src",
+    "steps",
+    "api",
+    "test_api_login.py"
+  ]
+}

@@ -1,0 +1,9 @@
+[2026-06-16T09:57:43] [INFO] Step: Executing Bank Transaction API Request | {"title": "AML Alert", "userId": 1}
+[2026-06-16T09:57:43] [INFO] API POST Request initiated | {"url": "https://jsonplaceholder.typicode.com/posts", "body": {"title": "AML Alert", "body": "AML Compliance Alert Triggered", "userId": 1}}
+[2026-06-16T09:57:46] [INFO] API POST Response received | {"duration": "2538.48ms", "status": 201}
+[2026-06-16T09:57:46] [INFO] Step: Validating API HTTP Status | {"actual": 201, "expected": 201}
+[2026-06-16T09:57:46] [INFO] Validating HTTP status code | {"actual": 201, "expected": 201}
+[2026-06-16T09:57:46] [INFO] ✅ Validation Passed: API Status matches
+[2026-06-16T09:57:46] [INFO] Step: Validating transaction ID | {"id": 101}
+[2026-06-16T09:57:46] [INFO] Validating transaction ID format | {"id": 101}
+[2026-06-16T09:57:46] [INFO] ✅ Validation Passed: Transaction ID is valid and numeric

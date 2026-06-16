@@ -1,0 +1,64 @@
+pipeline {
+    agent any
+
+    environment {
+        // Adjust paths if needed
+        PYTHON_VENV = ".venv"
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/your-org/your-playwright-framework.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh """
+                python -m venv ${PYTHON_VENV}
+                . ${PYTHON_VENV}/bin/activate
+                pip install --upgrade pip
+                pip install -r requirements.txt
+                playwright install chromium
+                """
+            }
+        }
+
+        stage('Prepare Allure History') {
+            steps {
+                script {
+                    if (fileExists('reports/allure-report/history')) {
+                        echo "✅ Previous Allure history found. Copying trend data..."
+                        sh 'mkdir -p reports/allure-results/history'
+                        sh 'cp -r reports/allure-report/history/* reports/allure-results/history/'
+                    } else {
+                        echo "⚠️ No previous Allure history found. This is normal for a first run."
+                    }
+                }
+            }
+        }
+
+        stage('Run Playwright Tests') {
+            steps {
+                sh "${PYTHON_VENV}/bin/pytest"
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                sh 'allure generate reports/allure-results --clean -o reports/allure-report'
+            }
+        }
+
+        stage('Publish Allure Report') {
+            steps {
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    results: [[path: 'reports/allure-results']]
+                ])
+            }
+        }
+    }
+}

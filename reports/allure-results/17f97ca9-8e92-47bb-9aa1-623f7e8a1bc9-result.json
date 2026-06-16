@@ -1,0 +1,110 @@
+{
+  "name": "User attempts login with username \"\"problem_user\"\" and password \"\"prasad\"\"",
+  "status": "passed",
+  "description": "C:\\Python_Playwright\\src\\features\\ui\\login.feature: User attempts login with username \"<username>\" and password \"<password>\"",
+  "steps": [
+    {
+      "name": "Given user navigates to the application",
+      "status": "passed",
+      "start": 1781584063831,
+      "stop": 1781584068842
+    },
+    {
+      "name": "When User enters \"problem_user\" username and \"prasad\" password",
+      "status": "passed",
+      "start": 1781584068844,
+      "stop": 1781584069452
+    },
+    {
+      "name": "Step: Clicking login button",
+      "status": "passed",
+      "start": 1781584069452,
+      "stop": 1781584069664
+    },
+    {
+      "name": "Then User encounters error message: \"Epic sadface: Username and password do not match any user in this service\"",
+      "status": "passed",
+      "steps": [
+        {
+          "name": "Validate login error message is \"Epic sadface: Username and password do not match any user in this service\"",
+          "status": "passed",
+          "start": 1781584069802,
+          "stop": 1781584069802
+        }
+      ],
+      "start": 1781584069666,
+      "stop": 1781584069802
+    }
+  ],
+  "attachments": [
+    {
+      "name": "stderr",
+      "source": "17029e35-a935-4484-bab5-6b8fbd1f4202-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "_pytest_bdd_example",
+      "value": "{'username': 'problem_user', 'password': 'prasad', 'error_message': 'Epic sadface: Username and password do not match any user in this service'}"
+    },
+    {
+      "name": "browser",
+      "value": "'chromium, firefox'"
+    }
+  ],
+  "start": 1781584063829,
+  "stop": 1781584069804,
+  "uuid": "405cd7ee-6a4b-4e7c-a14e-cd8b3e99a829",
+  "historyId": "64b4e300740beb2b3e2aa2b276f4f998",
+  "testCaseId": "c973e67129f0f2b52528fc06e54101cc",
+  "fullName": "src.steps.ui.test_login#test_user_attempts_login_with_username_username_and_password_password",
+  "labels": [
+    {
+      "name": "suite",
+      "value": "login"
+    },
+    {
+      "name": "parentSuite",
+      "value": "UI Test Suite"
+    },
+    {
+      "name": "tag",
+      "value": "InvalidCredentials"
+    },
+    {
+      "name": "tag",
+      "value": "Sanity"
+    },
+    {
+      "name": "tag",
+      "value": "LoginPage"
+    },
+    {
+      "name": "host",
+      "value": "S6-SurajY"
+    },
+    {
+      "name": "thread",
+      "value": "6548-MainThread"
+    },
+    {
+      "name": "framework",
+      "value": "pytest"
+    },
+    {
+      "name": "language",
+      "value": "cpython3"
+    },
+    {
+      "name": "package",
+      "value": "src.steps.ui.test_login"
+    }
+  ],
+  "titlePath": [
+    "src",
+    "steps",
+    "ui",
+    "test_login.py"
+  ]
+}

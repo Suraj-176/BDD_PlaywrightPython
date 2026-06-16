@@ -1,0 +1,54 @@
+name: Playwright Tests (Python BDD)
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  schedule:
+    - cron: '0 2 * * *' # Run nightly at 2 AM UTC
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Install Playwright Browsers
+      run: playwright install chromium --with-deps
+
+    - name: Run Playwright Tests (Pytest BDD)
+      env:
+        TEST_ENV: SIT
+        ENABLE_AI_HEALING: false
+      run: |
+        python run_tests.py
+
+    - name: Capture Test Artifacts (Screenshots/Videos/Logs)
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-artifacts
+        path: |
+          reports/
+          logs/
+        retention-days: 14

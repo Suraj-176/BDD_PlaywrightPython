@@ -1,0 +1,8 @@
+[2026-06-16T09:57:58] [INFO] Step: Navigating to login page
+[2026-06-16T09:57:58] [INFO] [LoginPage] Navigation attempt 1/3 | {"url": "https://www.saucedemo.com/"}
+[2026-06-16T09:57:59] [INFO] [LoginPage] Navigation successful | {"attempt": 1}
+[2026-06-16T09:57:59] [INFO] Step: Inserting user credentials | {"username": "locked_out_user"}
+[2026-06-16T09:58:00] [INFO] Step: Submitting login form
+[2026-06-16T09:58:00] [INFO] Step: Validating login error message
+[2026-06-16T09:58:00] [INFO] Validating login error message | {"actual": "Epic sadface: Sorry, this user has been locked out.", "expected": "Epic sadface: Sorry, this user has been locked out."}
+[2026-06-16T09:58:00] [INFO] ✅ Validation Passed: Login error message matches expected value

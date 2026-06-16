@@ -1,0 +1,110 @@
+{
+  "name": "User attempts login with username \"\"locked_out_user\"\" and password \"\"secret_sauce\"\"",
+  "status": "passed",
+  "description": "C:\\Python_Playwright\\src\\features\\ui\\login.feature: User attempts login with username \"<username>\" and password \"<password>\"",
+  "steps": [
+    {
+      "name": "Given user navigates to the application",
+      "status": "passed",
+      "start": 1781584078283,
+      "stop": 1781584079407
+    },
+    {
+      "name": "When User enters \"locked_out_user\" username and \"secret_sauce\" password",
+      "status": "passed",
+      "start": 1781584079409,
+      "stop": 1781584080218
+    },
+    {
+      "name": "Step: Clicking login button",
+      "status": "passed",
+      "start": 1781584080220,
+      "stop": 1781584080388
+    },
+    {
+      "name": "Then User encounters error message: \"Epic sadface: Sorry, this user has been locked out.\"",
+      "status": "passed",
+      "steps": [
+        {
+          "name": "Validate login error message is \"Epic sadface: Sorry, this user has been locked out.\"",
+          "status": "passed",
+          "start": 1781584080472,
+          "stop": 1781584080472
+        }
+      ],
+      "start": 1781584080388,
+      "stop": 1781584080472
+    }
+  ],
+  "attachments": [
+    {
+      "name": "stderr",
+      "source": "13f680c3-61de-4dcb-b138-16afb7c19512-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "_pytest_bdd_example",
+      "value": "{'username': 'locked_out_user', 'password': 'secret_sauce', 'error_message': 'Epic sadface: Sorry, this user has been locked out.'}"
+    },
+    {
+      "name": "browser",
+      "value": "'chromium, firefox'"
+    }
+  ],
+  "start": 1781584078281,
+  "stop": 1781584080472,
+  "uuid": "59a83291-7f13-495f-9806-e1895e104f6c",
+  "historyId": "70e302261285e4a3f2f67b04b203c3ba",
+  "testCaseId": "c973e67129f0f2b52528fc06e54101cc",
+  "fullName": "src.steps.ui.test_login#test_user_attempts_login_with_username_username_and_password_password",
+  "labels": [
+    {
+      "name": "suite",
+      "value": "login"
+    },
+    {
+      "name": "parentSuite",
+      "value": "UI Test Suite"
+    },
+    {
+      "name": "tag",
+      "value": "InvalidCredentials"
+    },
+    {
+      "name": "tag",
+      "value": "Sanity"
+    },
+    {
+      "name": "tag",
+      "value": "LoginPage"
+    },
+    {
+      "name": "host",
+      "value": "S6-SurajY"
+    },
+    {
+      "name": "thread",
+      "value": "6548-MainThread"
+    },
+    {
+      "name": "framework",
+      "value": "pytest"
+    },
+    {
+      "name": "language",
+      "value": "cpython3"
+    },
+    {
+      "name": "package",
+      "value": "src.steps.ui.test_login"
+    }
+  ],
+  "titlePath": [
+    "src",
+    "steps",
+    "ui",
+    "test_login.py"
+  ]
+}
