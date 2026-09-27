@@ -14,6 +14,7 @@ class LoginPage(BasePage):
     _password_field = "#password"
     _login_button = "#login-button"
     _error_message = 'h3[data-test="error"]'
+    _products_header = 'span.title' # Locator for the header on the products page
 
     # ─── 2. NAVIGATION METHODS ───
 
@@ -69,4 +70,23 @@ class LoginPage(BasePage):
             lambda l: self.get_text(l),
             "red error message shown below login form when credentials are wrong or empty"
         )
-pass
+    
+    def is_products_page_displayed(self) -> bool:
+        """
+        Checks if the 'Products' header is visible on the page, indicating a successful login.
+        """
+        try:
+            self.page.wait_for_selector(self._products_header, state='visible', timeout=5000)
+            return True
+        except Exception:
+            return False
+
+    def get_products_page_title(self) -> str:
+        """
+        Retrieves the text of the 'Products' header.
+        """
+        return self.try_locators(
+            [self._products_header],
+            lambda l: self.get_text(l),
+            "Products page header"
+        )

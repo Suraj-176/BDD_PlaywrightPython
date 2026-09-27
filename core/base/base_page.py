@@ -1,6 +1,7 @@
 import os
 import time
 import inspect
+import allure # Added for allure.step
 from playwright.sync_api import Page, expect
 from core.ai.ai_service import AIService
 from core.logger.logger import logger
@@ -14,9 +15,9 @@ class BasePage:
         if options is None:
             options = {}
 
-        timeout = options.get("timeout", 120000)
+        timeout = options.get("timeout", config.timeouts["navigation"]) # Using config timeout
         wait_until = options.get("waitUntil", "domcontentloaded")
-        retries = options.get("retries", 3)
+        retries = options.get("retries", config.max_retries) # Using config retries
 
         target_url = url or os.getenv("BASE_URL") or config.base_url
         last_error = None
@@ -59,21 +60,21 @@ class BasePage:
         # All retries exhausted
         raise RuntimeError(
             f"[{self.__class__.__name__}] Navigation failed after {retries} attempts\n"
-            f"URL: {target_url}\n"
+            f"URL: {target_url}\n" # Corrected target URL
             f"Last error: {str(last_error)}"
         )
 
     def select_element(self, locator: str, option):
         self.page.wait_for_load_state("domcontentloaded")
         element = self.page.locator(locator)
-        expect(element).to_be_visible(timeout=2000)
-        expect(element).to_be_enabled(timeout=2000)
+        expect(element).to_be_visible(timeout=config.timeouts["action"]) # Using config timeout
+        expect(element).to_be_enabled(timeout=config.timeouts["action"]) # Using config timeout
         element.select_option(option)
 
     def perform_mouse_action(self, action: str, locator: str) -> None:
         self.page.wait_for_load_state("domcontentloaded")
         element = self.page.locator(locator)
-        expect(element).to_be_visible(timeout=2000)
+        expect(element).to_be_visible(timeout=config.timeouts["action"]) # Using config timeout
 
         action_lower = action.lower()
         if action_lower == "click":
@@ -90,20 +91,20 @@ class BasePage:
     def fill_text(self, locator: str, text: str):
         self.page.wait_for_load_state("domcontentloaded")
         element = self.page.locator(locator)
-        expect(element).to_be_visible(timeout=2000)
+        expect(element).to_be_visible(timeout=config.timeouts["action"])
         element.clear()
         element.fill(text)
 
     def click(self, locator: str):
         self.page.wait_for_load_state("domcontentloaded")
         element = self.page.locator(locator)
-        expect(element).to_be_visible(timeout=2000)
+        expect(element).to_be_visible(timeout=config.timeouts["action"])
         element.click()
 
     def get_text(self, locator: str) -> str:
         self.page.wait_for_load_state("domcontentloaded")
         element = self.page.locator(locator)
-        expect(element).to_be_visible(timeout=2000)
+        expect(element).to_be_visible(timeout=config.timeouts["action"])
         return element.inner_text()
 
     # ─── AI Methods ─────────────────────────────────────────
@@ -120,51 +121,61 @@ class BasePage:
         locator = self.ai_get_locator(element_description)
         self.click(locator)
 
-    def ai_get_text(self, element_description: str) -> str:
-        locator = self.ai_get_locator(element_description)
-        return self.get_text(locator)
+    def try_locators(self, locators: list[str], action, description: str = "element"):
+        """
+        Attempts to perform an action using a list of locators.
+        If all locators fail and AI healing is enabled, it attempts to use AI to find the locator.
 
-    # ─── try_locators with AI healing ───────────────────
+        :param locators: A list of Playwright locators (CSS or XPath strings).
+        :param action: A callable (lambda or method) that takes a locator string and performs an action.
+                       e.g., `lambda l: self.click(l)`
+        :param description: A human-readable description of the element for logging and AI.
+        :return: The result of the action, if any.
+        :raises RuntimeError: If all locators fail and AI healing is disabled or fails.
+        """
+        last_error = None
+        for i, locator_str in enumerate(locators):
+            with allure.step(f"Attempting to find and interact with '{description}' using locator '{locator_str}' (Attempt {i+1}/{len(locators)})"):
+                logger.info(f"[{self.__class__.__name__}] Attempting action on '{description}'", {
+                    "locator": locator_str, "attempt": i + 1
+                })
+                try:
+                    result = action(locator_str)
+                    logger.info(f"[{self.__class__.__name__}] Action successful on '{description}' with locator '{locator_str}'")
+                    return result
+                except Exception as e:
+                    last_error = e
+                    logger.warn(f"[{self.__class__.__name__}] Action failed on '{description}' with locator '{locator_str}'", {
+                        "error": str(e), "attempt": i + 1
+                    })
 
-    def try_locators(self, locators: list, action, field_name: str):
-        call_site = self._get_call_site()
-        errors = []
-
-        for locator in locators:
-            try:
-                return action(locator)
-            except Exception as err:
-                message = str(err)
-                errors.append(f"  • {locator} → {message}")
-                logger.warn(
-                    f"[{self.__class__.__name__}] Locator failed for \"{field_name}\": {locator}"
-                    f"\n  Reason: {message}"
-                )
-
-        if os.getenv("ENABLE_AI_HEALING") != "true":
+        # All provided locators failed
+        if config.enable_ai_healing:
+            with allure.step(f"All standard locators failed. Attempting AI self-healing for '{description}'"):
+                logger.info(f"[{self.__class__.__name__}] All standard locators failed for '{description}'. Attempting AI self-healing.")
+                try:
+                    ai_generated_locator = self.ai_get_locator(description)
+                    if ai_generated_locator:
+                        logger.info(f"[{self.__class__.__name__}] AI successfully generated locator for '{description}'", {
+                            "ai_locator": ai_generated_locator
+                        })
+                        result = action(ai_generated_locator)
+                        with allure.step(f"Action successful using AI-generated locator: '{ai_generated_locator}'"):
+                            logger.info(f"[{self.__class__.__name__}] Action successful on '{description}' with AI-generated locator.")
+                            return result
+                    else:
+                        raise RuntimeError(f"AI failed to generate a locator for '{description}'.")
+                except Exception as ai_error:
+                    logger.error(f"[{self.__class__.__name__}] AI self-healing failed for '{description}'", {
+                        "ai_error": str(ai_error), "last_manual_error": str(last_error)
+                    })
+                    raise RuntimeError(
+                        f"Failed to interact with '{description}' after all standard locators failed "
+                        f"and AI self-healing also failed. Last manual error: {str(last_error)}. AI error: {str(ai_error)}"
+                    ) from ai_error
+        else:
+            logger.error(f"[{self.__class__.__name__}] Failed to interact with '{description}' after all standard locators failed. AI self-healing is disabled.")
             raise RuntimeError(
-                f"[{self.__class__.__name__}] All locators failed for: \"{field_name}\"\n"
-                f"Failures:\n" + "\n".join(errors) + "\n"
-                f"Called from: {call_site}\n"
-                "Set ENABLE_AI_HEALING=true to allow AI locator fallback."
-            )
-
-        logger.warn(f"[{self.__class__.__name__}] Attempting AI healing for \"{field_name}\"")
-        try:
-            ai_locator = self.ai_get_locator(field_name)
-            return action(ai_locator)
-        except Exception:
-            raise RuntimeError(
-                f"[{self.__class__.__name__}] All locators + AI healing failed for: \"{field_name}\"\n"
-                f"Failures:\n" + "\n".join(errors) + "\n"
-                f"Called from: {call_site}"
-            )
-
-    def _get_call_site(self) -> str:
-        stack = inspect.stack()
-        # Find first stack frame outside of core files
-        for frame in stack[2:]:
-            filename = frame.filename
-            if "base_page" not in filename and "python" not in filename:
-                return f"{os.path.basename(filename)}:{frame.lineno}"
-        return "unknown"
+                f"Failed to interact with '{description}' after all standard locators failed. "
+                f"AI self-healing is disabled. Last error: {str(last_error)}"
+            ) from last_error

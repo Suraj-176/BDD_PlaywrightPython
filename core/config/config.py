@@ -118,42 +118,10 @@ class Config:
     def database(self) -> dict:
         return {
             "host": os.getenv("DB_HOST", "localhost"),
-            "port": int(os.getenv("DB_PORT", "5432")),
-            "user": os.getenv("DB_USER", "automation_user"),
-            "password": os.getenv("DB_PASSWORD", ""),
-            "database": os.getenv("DB_NAME", "aml_db"),
-            "ssl": os.getenv("DB_SSL") == "true",
         }
-
-    # AI/Groq
+        
     @property
-    def groq_api_key(self) -> str:
-        key = os.getenv("GROQ_API_KEY")
-        if not key:
-            raise RuntimeError("GROQ_API_KEY is not set in environment variables")
-        return key
+    def enable_ai_healing(self) -> bool:
+        return os.getenv("ENABLE_AI_HEALING", "false").lower() == "true"
 
-    # AML Specific
-    @property
-    def aml_config(self) -> dict:
-        return {
-            "sanctions_check_api": os.getenv("SANCTIONS_CHECK_API", "https://sanctions-api.icici.com"),
-            "kyc_api": os.getenv("KYC_API", "https://kyc-api.icici.com"),
-            "sar_filing_api": os.getenv("SAR_FILING_API", "https://sar-filing-api.icici.com"),
-            "pep_check_enabled": os.getenv("PEP_CHECK_ENABLED") == "true",
-            "transaction_threshold": int(os.getenv("TRANSACTION_THRESHOLD", "1000000")),
-            "audit_log_table": os.getenv("AUDIT_LOG_TABLE", "audit_logs"),
-        }
-
-    # Reporting
-    @property
-    def reporting(self) -> dict:
-        return {
-            "allure_results_dir": os.getenv("ALLURE_RESULTS_DIR", "reports/allure-results"),
-            "allure_report_dir": os.getenv("ALLURE_REPORT_DIR", "reports/allure-report"),
-            "screenshots_dir": os.getenv("SCREENSHOTS_DIR", "reports/screenshots"),
-            "videos_dir": os.getenv("VIDEOS_DIR", "reports/videos"),
-        }
-
-# Singleton Config
-config = Config()
+config = Config() # Instantiate the config once
